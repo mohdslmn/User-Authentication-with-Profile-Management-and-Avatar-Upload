@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { backendUrl } from './constant/api';
 
 const Signup = () => {
@@ -10,6 +11,8 @@ const Signup = () => {
         password: '',
         avatar: null,
     });
+    const [successMessage, setSuccessMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -35,6 +38,10 @@ const Signup = () => {
                 },
             });
             console.log(response.data);
+            setSuccessMessage('Sign-up successful! Redirecting to login...');
+
+            // Navigate to login immediately
+            navigate('/login');
         } catch (error) {
             console.error('Error during signup:', error);
         }

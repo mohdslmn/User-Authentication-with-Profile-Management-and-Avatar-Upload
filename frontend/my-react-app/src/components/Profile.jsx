@@ -123,7 +123,7 @@ const Profile = () => {
                     ) : (
                         <div className="text-center">
                             <img
-                                src={user.avatar ? `http://localhost:3000/${user.avatar}` : '/path/to/default-avatar.png'}
+                                src={user.avatar ? `${backendUrl}/${user.avatar}` : '/path/to/default-avatar.png'}
                                 alt="User Avatar"
                                 className="w-24 h-24 rounded-full mx-auto mb-4"
                             />
