@@ -1,10 +1,13 @@
 <div align="center">
   <br />
       <img src="./pic.png" alt="Project Banner" width="850" height="450">
-    </a>
   <br />
 
   <h3 align="center">User Authentication with Profile Management and Avatar Upload</h3>
+
+  <h3> Use this URL to Test this fullstack Application</h3>
+  
+   <a href="https://my-frontend-r3t8.onrender.com/signup"> Test </a>
 
  
 </div>
@@ -28,28 +31,48 @@ for simplicity and efficiency, this app aims to provide a seamless voting experi
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
  **Frontend (React):
+ 
  **Signup and Login Pages:
+ 
  **Create forms for user signup and login.
+ 
  **Allow users to upload their avatar during signup.
+ 
  **Store the JWT token in localStorage after login.
+ 
  **Profile Page:
+
+ 
  **Fetch the logged-in user's profile details using the JWT token.
+ 
+ 
  **Display the profile information and avatar.
+ 
+ 
  **Create a form to update the user's name, email, and avatar.
+ 
 
  **Backend (Node.js, Express, MongoDB):
+ 
 
  **User Authentication:
+ 
 
  **Implement registration (POST /api/register) and login (POST /api/login) endpoints.
+ 
 
  **Use JWT for authentication.
+ 
+
 
  **Create a middleware to protect the profile routes.
  
+ 
  **Profile API:
+ 
 
  **GET /api/profile/:id : Get the authenticated user’s profile.
+ 
 
  **PUT /api/profile/:id : Update the user's profile information, with avatar.
 
@@ -68,12 +91,17 @@ for simplicity and efficiency, this app aims to provide a seamless voting experi
  **Store user information with fields:
  
  **name: String
+ 
  **email: String (unique)
+ 
  **password: String (hashed)
+ 
  **avatar: String (URL to the avatar image)
 
  **Frontend: React, Axios, React Router, FormData for avatar uploads.
+ 
  **Backend: Node.js, Express.js, JWT for authentication, Multer for avatar uploads.
+
  **Database: MongoDB with Mongoose.
   
 ## <a name="requirements"> Requirements </a>
@@ -81,23 +109,33 @@ for simplicity and efficiency, this app aims to provide a seamless voting experi
  **User Signup & Login:
 
  **Allow users to sign up with the following fields:
+ 
  **name: String
+ 
  **email: String
+ 
  **password: String (hashed)
+ 
  **avatar: Upload profile picture
+ 
  **Implement login functionality using email and password.
+ 
  **Use JWT for authentication.
 
  **View Profile:
 
  **After logging in, users should see their profile page displaying:
+ 
  **name
+ 
  **email
+ 
  **avatar (if uploaded, else show a default avatar). 
 
 **Update Profile:
 
  **Allow users to update their name, email, and avatar.
+ 
  **Implement profile update functionality so users can upload or change their profile picture
 
 ## <a name="features">🔋 Features</a>
@@ -137,8 +175,12 @@ cd Aassigmnet
 Install the project dependencies using npm:
 
  **backend Deployed URL : https://my-backend-rdvm.onrender.com
+ 
  **after that you can use above any API's
+ 
  ** for ex: https://my-backend-rdvm.onrender.com/api/register
+
+
 
 **Connect to your MongoDB**
 
