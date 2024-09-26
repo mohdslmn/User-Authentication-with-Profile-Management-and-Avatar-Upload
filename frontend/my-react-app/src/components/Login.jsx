@@ -1,7 +1,9 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
+import { backendUrl } from './constant/api'; 
+import {jwtDecode} from 'jwt-decode';
 
 const Login = () => {
     const [credentials, setCredentials] = useState({ email: '', password: '' });
@@ -13,12 +15,35 @@ const Login = () => {
         setCredentials({ ...credentials, [name]: value });
     };
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const response = await axios.post(`${backendUrl}/api/login`, credentials);
+    //         console.log('Login Response:', response.data);
+    //         navigate('/profile');
+    //     } catch (error) {
+    //         setError('Login failed. Please check your credentials.');
+    //         console.error('Login error:', error);
+    //     }
+    // };
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/api/login', credentials);
+            const response = await axios.post(`${backendUrl}/api/login`, credentials);
             console.log('Login Response:', response.data);
-            navigate('/profile');
+ 
+            // Assuming the response contains the user ID and token
+            const decodedToken = jwtDecode(response.data); // Assuming response.data is the JWT token
+            const userId = decodedToken.id; 
+ 
+            // Clear existing user data
+            localStorage.clear();
+ 
+            // // Set new user data in localStorage
+            localStorage.setItem('userId', userId);
+            // localStorage.setItem('token', token);
+ 
+            navigate('/profile'); // Redirect to profile or another page
         } catch (error) {
             setError('Login failed. Please check your credentials.');
             console.error('Login error:', error);

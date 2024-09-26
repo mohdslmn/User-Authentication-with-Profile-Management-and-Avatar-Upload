@@ -22,7 +22,12 @@ const upload = multer({ storage: storage });
 router.post("/register", upload.single("avatar"), async (req, res) => {
   try {
     // req.body contains person data
-    const data = req.body;
+    const  data = req.body;
+    
+    const existingUser = await User.findOne(data);
+    if (existingUser) {
+        return res.status(400).json({ error: "Email already in use" });
+    }
 
     // If an avatar was uploaded, add the file path to the user data
     if (req.file) {
@@ -30,19 +35,19 @@ router.post("/register", upload.single("avatar"), async (req, res) => {
     }
 
     // Create a new Person document in the database
-    const newUser = new User(data);
+    const newUser = new User( data);
     // Save new person in the database
     const savedUser = await newUser.save();
     console.log("Data saved");
 
-    const payload = {
-      id: savedUser.id,
-      name: savedUser.name,
-    };
-    console.log(JSON.stringify(payload));
+    // const payload = {
+    //   id: savedUser.id,
+    //   name: savedUser.name,
+    // };
+    // console.log(JSON.stringify(payload));
 
-    const token = generateToken(payload);
-    console.log("Token is:", token);
+    // const token = generateToken(payload);
+    // console.log("Token is:", token);
 
     res.status(200).json({ savedUser, token });
   } catch (err) {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { backendUrl } from './constant/api';
 
 const Profile = () => {
     const [user, setUser] = useState(null);
@@ -10,10 +11,13 @@ const Profile = () => {
     useEffect(() => {
         const fetchUserProfile = async () => {
             const userId = localStorage.getItem('userId');
+           
 
             if (userId) {
                 try {
-                    const response = await axios.get(`http://localhost:3000/api/profile/${userId}`);
+                    const response = await axios.get(`${backendUrl}/api/profile/${userId}`);
+                    // const avatarUrl = `${backendUrl}/${response.data.avatar}`;
+                    // console.log('Response Data:', response.data);
                     setUser(response.data);
                     setUpdatedUser({ name: response.data.name, email: response.data.email, avatar: response.data.avatar });
                 } catch (error) {
@@ -53,7 +57,7 @@ const Profile = () => {
         }
 
         try {
-            const response = await axios.put(`http://localhost:3000/api/update/${userId}`, data, {
+            const response = await axios.put(`${backendUrl}/api/update/${userId}`, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -76,9 +80,9 @@ const Profile = () => {
                         <form onSubmit={handleUpdate}>
                             <div className="mb-4">
                                 <img
-                                    src={user.avatar ? `http://localhost:3000/${user.avatar}` : '/path/to/default-avatar.png'}
+                                    src={user.avatar ? `${backendUrl}/${user.avatar}` : './pic.png'}
                                     alt="User Avatar"
-                                    className="w-24 h-24 rounded-full mx-auto mb-4"
+                                    className="w-24 h-24 rounded-full  mb-4"
                                 />
                                 <input
                                     type="text"

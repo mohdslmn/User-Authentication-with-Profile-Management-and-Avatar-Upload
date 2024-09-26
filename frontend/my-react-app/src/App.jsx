@@ -5,7 +5,7 @@ import Profile from './components/Profile';
 
 function App() {
   const isAuthenticated = () => {
-    return localStorage.getItem('token') !== null;
+    return localStorage.getItem('userId') !== null;
   };
 
   return (
@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Navigate to="/signup" />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={isAuthenticated() ? <Profile /> : <Navigate to="/login" />} />
+          <Route path="/profile" element={isAuthenticated() ? <Profile /> : <Navigate to="/profile" />} />
         </Routes>
       </div>
     </Router>

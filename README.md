@@ -38,22 +38,35 @@ for simplicity and efficiency, this app aims to provide a seamless voting experi
  **Create a form to update the user's name, email, and avatar.
 
  **Backend (Node.js, Express, MongoDB):
+
  **User Authentication:
+
  **Implement registration (POST /api/register) and login (POST /api/login) endpoints.
+
  **Use JWT for authentication.
+
  **Create a middleware to protect the profile routes.
+ 
  **Profile API:
- **GET /api/profile: Get the authenticated user’s profile.
- **PUT /api/profile: Update the user's profile information, with avatar.
+
+ **GET /api/profile/:id : Get the authenticated user’s profile.
+
+ **PUT /api/profile/:id : Update the user's profile information, with avatar.
 
  **Avatar Upload:
- **Use Multer or a similar library to handle file uploads.
- **Store the avatar locally or in a cloud storage like AWS S3.
+
+ **Used Multer or a similar library to handle file uploads.
+
+ **Store the avatar locally 
+ 
  **Save the avatar's URL in the user's document in MongoDB.
 
  **Database (MongoDB):
+
  **User Collection:
+
  **Store user information with fields:
+ 
  **name: String
  **email: String (unique)
  **password: String (hashed)
@@ -122,6 +135,10 @@ cd Aassigmnet
 **Installation**
 
 Install the project dependencies using npm:
+
+ **backend Deployed URL : https://my-backend-rdvm.onrender.com
+ **after that you can use above any API's
+ ** for ex: https://my-backend-rdvm.onrender.com/api/register
 
 **Connect to your MongoDB**
 

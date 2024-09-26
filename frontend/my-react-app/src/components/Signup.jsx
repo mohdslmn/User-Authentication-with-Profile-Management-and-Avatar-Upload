@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import { backendUrl } from './constant/api';
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const Signup = () => {
         data.append('avatar', formData.avatar);
 
         try {
-            const response = await axios.post('http://localhost:3000/api/register', data, {
+            const response = await axios.post(`${backendUrl}/api/register`, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

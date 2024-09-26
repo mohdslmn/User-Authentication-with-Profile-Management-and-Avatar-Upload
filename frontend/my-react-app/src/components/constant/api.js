@@ -1,0 +1,1 @@
+export const backendUrl = 'https://my-backend-rdvm.onrender.com';
