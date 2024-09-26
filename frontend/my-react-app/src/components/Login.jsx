@@ -15,25 +15,17 @@ const Login = () => {
         setCredentials({ ...credentials, [name]: value });
     };
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         const response = await axios.post(`${backendUrl}/api/login`, credentials);
-    //         console.log('Login Response:', response.data);
-    //         navigate('/profile');
-    //     } catch (error) {
-    //         setError('Login failed. Please check your credentials.');
-    //         console.error('Login error:', error);
-    //     }
-    // };
+ 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
         try {
-            const response = await axios.post(`${backendUrl}/api/login`, credentials);
+            const loginUrl = `${backendUrl}${import.meta.env.VITE_LOGIN_USER_ROUTE}`; 
+            const response = await axios.post(loginUrl, credentials);
             console.log('Login Response:', response.data);
  
             // Assuming the response contains the user ID and token
-            const decodedToken = jwtDecode(response.data); // Assuming response.data is the JWT token
+            const decodedToken = jwtDecode(response.data); 
             const userId = decodedToken.id; 
  
             // Clear existing user data
@@ -43,7 +35,7 @@ const Login = () => {
             localStorage.setItem('userId', userId);
             // localStorage.setItem('token', token);
  
-            navigate('/profile'); // Redirect to profile or another page
+            navigate('/profile');
         } catch (error) {
             setError('Login failed. Please check your credentials.');
             console.error('Login error:', error);

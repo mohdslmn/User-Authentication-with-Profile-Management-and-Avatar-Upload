@@ -15,7 +15,8 @@ const Profile = () => {
 
             if (userId) {
                 try {
-                    const response = await axios.get(`${backendUrl}/api/profile/${userId}`);
+                    const profileUrl = `${backendUrl}${import.meta.env.VITE_PROFILE_USER_ROUTE}/${userId}`;
+                    const response = await axios.get(profileUrl);
                     // const avatarUrl = `${backendUrl}/${response.data.avatar}`;
                     // console.log('Response Data:', response.data);
                     setUser(response.data);
@@ -57,12 +58,16 @@ const Profile = () => {
         }
 
         try {
-            const response = await axios.put(`${backendUrl}/api/update/${userId}`, data, {
+            const updateUrl = `${backendUrl}${import.meta.env.VITE_UPDATE_PROFILE_ROUTE}/${userId}`;
+
+            console.log('Update URL:', updateUrl);
+            const response = await axios.put(updateUrl, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
             setUser(response.data);
+            console.log('Profile updated successfully:', response.data);
             setIsEditing(false);
         } catch (error) {
             console.error('Error updating user profile:', error);

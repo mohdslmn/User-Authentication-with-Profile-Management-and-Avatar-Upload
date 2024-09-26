@@ -32,7 +32,9 @@ const Signup = () => {
         data.append('avatar', formData.avatar);
 
         try {
-            const response = await axios.post(`${backendUrl}/api/register`, data, {
+            const signupUrl = `${backendUrl}${import.meta.env.VITE_SIGNIN_USER_ROUTE}`;
+
+            const response = await axios.post(signupUrl, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
