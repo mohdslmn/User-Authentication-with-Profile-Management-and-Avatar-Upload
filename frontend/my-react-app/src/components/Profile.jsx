@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { backendUrl } from './constant/api';
+import { backendUrl } from '../constant/api';
 
 const Profile = () => {
     const [user, setUser] = useState(null);
